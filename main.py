@@ -2,6 +2,7 @@ import random
 from ast import match_case
 from enum import Enum, auto
 from tokenize import Double
+from utils.bubble_sort import bubbleSort
 
 
 class SortType(Enum):
@@ -19,7 +20,7 @@ class SortType(Enum):
 
 def getRandomNums() -> list:
     # Generate 15 random nums
-    return random.sample(range(20), 15)
+    return random.sample(range(100), 15)
 
 
 def getSortType(val: int) -> SortType:
@@ -29,10 +30,11 @@ def getSortType(val: int) -> SortType:
             return e
 
 
-def sorting(type: SortType):
+def sorting(nums: list, type: SortType) -> list:
     # Apply related sorting
     match type:
-        case SortType.bubbleSort: pass
+        case SortType.bubbleSort:
+            return bubbleSort(nums)
         case SortType.selectionSort: pass
         case SortType.insertionSort: pass
         case SortType.mergeSort: pass
@@ -48,7 +50,9 @@ def main():
     sortType = getSortType(int(val))
     print('Sorting by using %s... ' % sortType.name)
 
-    sorting(sortType)
+    res = sorting(nums, sortType)
+
+    print('Sorted numbers: ', res)
 
 
 main()
