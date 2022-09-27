@@ -3,6 +3,7 @@ from ast import match_case
 from enum import Enum, auto
 from tokenize import Double
 from utils.bubble_sort import bubbleSort
+from utils.selection_sort import selectionSort
 
 
 class SortType(Enum):
@@ -15,12 +16,15 @@ class SortType(Enum):
 
     def printAll():
         for e in SortType:
-            print(e.value, e.name)
+            print('- ', e.value, e.name)
 
 
 def getRandomNums() -> list:
     # Generate 15 random nums
-    return random.sample(range(100), 15)
+    nums = random.sample(range(100), 15)
+    if isSorted(nums):
+        getRandomNums()
+    return nums
 
 
 def getSortType(val: int) -> SortType:
@@ -35,10 +39,15 @@ def sorting(nums: list, type: SortType) -> list:
     match type:
         case SortType.bubbleSort:
             return bubbleSort(nums)
-        case SortType.selectionSort: pass
+        case SortType.selectionSort:
+            return selectionSort(nums)
         case SortType.insertionSort: pass
         case SortType.mergeSort: pass
         case SortType.quickSort: pass
+
+
+def isSorted(nums: list) -> bool:
+    return all(nums[i] <= nums[i+1] for i in range(len(nums)-1))
 
 
 def main():
@@ -52,7 +61,11 @@ def main():
 
     res = sorting(nums, sortType)
 
-    print('Sorted numbers: ', res)
+    if isSorted(nums):
+        print('Sorted numbers: ', res)
+    else:
+        print('---Error found---')
 
 
-main()
+if __name__ == '__main__':
+    main()
