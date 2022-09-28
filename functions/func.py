@@ -1,8 +1,9 @@
 import random
 
-from models.enum import *
-from utils.bubble_sort import *
-from utils.selection_sort import *
+from models.enum import SortType
+from utils.bubble_sort import bubbleSort
+from utils.insertion_sort import insertionSort
+from utils.selection_sort import selectionSort
 
 
 def getRandomNums() -> list:
@@ -18,7 +19,7 @@ def sorting(nums: list, type: SortType) -> list:
     match type:
         case SortType.bubbleSort: return bubbleSort(nums)
         case SortType.selectionSort: return selectionSort(nums)
-        case SortType.insertionSort: pass
+        case SortType.insertionSort: return insertionSort(nums)
         case SortType.mergeSort: pass
         case SortType.quickSort: pass
 

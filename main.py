@@ -1,5 +1,5 @@
-from functions.func import *
-from models.enum import *
+from functions.func import getRandomNums, isSorted, sorting
+from models.enum import SortType
 
 
 def main():
