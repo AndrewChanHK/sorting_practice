@@ -11,11 +11,12 @@ class SortType(Enum):
 
     def getName(self) -> str:
         match self:
-            case SortType.bubbleSort: return 'Bubble Sort'
-            case SortType.selectionSort: return 'Selection Sort'
-            case SortType.insertionSort: return 'Insertion Sort'
-            case SortType.mergeSort: return 'Merge Sort'
-            case SortType.quickSort: return 'Quick Sort'
+            case SortType.bubbleSort:  res = 'Bubble Sort'
+            case SortType.selectionSort:  res = 'Selection Sort'
+            case SortType.insertionSort:  res = 'Insertion Sort'
+            case SortType.mergeSort:  res = 'Merge Sort'
+            case SortType.quickSort:  res = 'Quick Sort'
+        return res
 
     def getSortType(val: int):
         # Return related type
