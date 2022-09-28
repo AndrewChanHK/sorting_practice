@@ -1,4 +1,5 @@
-from functions.func import getRandomNums, isSorted, sorting
+from controllers.sorting_controller import SortingController
+from functions.func import getRandomNums
 from models.enum import SortType
 
 
@@ -11,9 +12,11 @@ def main():
     sortType = SortType.getSortType(int(val))
     print('Sorting by using %s... ' % sortType.getName())
 
-    res = sorting(nums, sortType)
+    controller = SortingController()
 
-    if isSorted(nums):
+    res = controller.sort(nums, sortType)
+
+    if controller.isSorted(nums):
         print('Sorted numbers: ', res)
     else:
         print('---Error found---')
