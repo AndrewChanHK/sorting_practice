@@ -1,6 +1,7 @@
 from models.enum import SortType
 from utils.bubble_sort import bubbleSort
 from utils.insertion_sort import insertionSort
+from utils.merge_sort import mergeSorting
 from utils.selection_sort import selectionSort
 
 
@@ -18,7 +19,7 @@ class SortingController:
             case SortType.bubbleSort: return bubbleSort(nums)
             case SortType.selectionSort: return selectionSort(nums)
             case SortType.insertionSort: return insertionSort(nums)
-            case SortType.mergeSort: pass
+            case SortType.mergeSort: return mergeSorting(nums)
             case SortType.quickSort: pass
 
     def isSorted(self, nums: list) -> bool:
